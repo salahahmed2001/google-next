@@ -3,7 +3,7 @@ import Link from "next/link";
 
 
 export default async function WebSearchPage({searchParams}) {
-  const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=AIzaSyBG48Tm0guM63azqNLoWa-U0FYd9G_YUjc&cx=959624f72359c4a02&q=${searchParams.searchTerm}`)
+  const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KAY}&q=${searchParams.searchTerm}`)
   if (!response.ok) throw new Error('Something went wrong');
   const data = await response.json();
   const results = data.items;
