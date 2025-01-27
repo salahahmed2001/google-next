@@ -5,9 +5,9 @@ import { BsFillMicFill } from "react-icons/bs";
 import { useState } from "react";
 import { useSearchParams,useRouter } from "next/navigation";
 export default function SearchBox() {
-    const serarchParams = useSearchParams();
+    const searchParams = useSearchParams();
     const router = useRouter();
-    const searchTerm = serarchParams.get('searchTerm');
+    const searchTerm = searchParams.get('searchTerm');
     const [term,setTerm]=useState(searchTerm || '');
     const handleSubmit = (e) => {
         e.preventDefault();
