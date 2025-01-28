@@ -31,8 +31,10 @@ export default async function ImageSearchPage({searchParams}) {
     );
   }
   return (
-   <div className="">
-    {results &&  <ImageSearchResults results={data}/>}
-   </div>
+    <Suspense fallback={<div>Loading...</div>}>
+    <div className="">
+      {results && <ImageSearchResults results={data} />}
+    </div>
+  </Suspense>
   )
 }
