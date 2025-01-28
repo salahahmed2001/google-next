@@ -1,5 +1,6 @@
 import ImageSearchResults from "@/components/ImageSearchResults";
 import Link from "next/link";
+import React,{Suspense} from "react";
 
 
 export default async function ImageSearchPage({searchParams}) {
@@ -13,17 +14,20 @@ export default async function ImageSearchPage({searchParams}) {
 
   if (!results) {
     return (
-      <div className='flex flex-col justify-center items-center pt-10'>
+      <Suspense fallback={<div>Loading...</div>}>
+         <div className='flex flex-col justify-center items-center pt-10'>
         <h1 className='text-3xl mb-4'>
           No results found for {searchParams.searchTerm}
         </h1>
         <p className='text-lg'>
-          Try searching the web or images for something else{' '}
+          Try searching the web or images for something else
           <Link href='/' className='text-blue-500'>
             Home
           </Link>
         </p>
       </div>
+      </Suspense>
+     
     );
   }
   return (
