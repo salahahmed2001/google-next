@@ -1,4 +1,5 @@
 
+import { Suspense } from "react";
 import "./globals.css";
 import Footer from "@/components/Footer";
 
@@ -17,8 +18,11 @@ export default function RootLayout({ children }) {
         className='relative min-h-screen '
       >
 
-        {children}
-        <Footer/>
+       {/* useSearchParams() has to be wrapped inside `<Suspense />` */}
+       <Suspense fallback={<div>Loading...</div>}>
+          {children}
+          <Footer />
+        </Suspense>
       </body>
     </html>
   );
